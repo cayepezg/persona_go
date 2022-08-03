@@ -1,0 +1,23 @@
+info:
+  contact:
+    email: cayepezg@gmail.com
+    name: Carlos Yépez
+    url: https://www.carlosyepez.com
+  description: API de gestión de Personas
+  license:
+    name: GNU
+  termsOfService: Sin términos de servicio
+  title: Micro API/Personas
+  version: 0.1.0
+host: locahost
+consumes:
+- application/json
+produces:
+- application/json
+paths: {}
+host: ""
+basePath: /
+schemes:
+- http
+- https
+swagger: "2.0"

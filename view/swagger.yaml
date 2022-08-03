@@ -1,0 +1,123 @@
+consumes:
+- application/json
+produces:
+- application/json
+schemes:
+- http
+- https
+swagger: "2.0"
+info:
+  description: API de gestión de Personas
+  title: Micro API/Personas
+  termsOfService: Sin términos de servicio
+  contact:
+    name: Carlos Yépez
+    url: https://www.carlosyepez.com
+    email: cayepezg@gmail.com
+  license:
+    name: GNU
+  version: 0.1.0
+basePath: /
+paths:
+  /api/persona:
+    get:
+      description: Entrega la Persona solicitada.
+      tags:
+      - Persona
+      summary: Entrega la Persona solicitada.
+      operationId: GetPersona
+      parameters:
+      - type: string
+        description: Identificador único de la persona.
+        name: identificador
+        in: query
+      responses:
+        "200":
+          description: Data de la Persona consultada
+          schema:
+            $ref: '#/definitions/Persona'
+    put:
+      description: Actualiza una persona.
+      tags:
+      - Persona
+      summary: Actualiza una persona.
+      operationId: UpdatePersona
+      parameters:
+      - description: Persona a Actualizar.
+        name: persona
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Persona'
+      responses:
+        "200":
+          description: Data de la Persona actualizada
+          schema:
+            $ref: '#/definitions/Persona'
+    post:
+      description: Crea una persona.
+      tags:
+      - Persona
+      summary: Crea una persona.
+      operationId: CreatePersona
+      parameters:
+      - description: Persona a Crear.
+        name: persona
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Persona'
+      responses:
+        "200":
+          description: Data de la Persona creada
+          schema:
+            $ref: '#/definitions/Persona'
+  /api/persona/html:
+    get:
+      description: Entrega un listado de Personas en formato HTML.
+      tags:
+      - Persona
+      summary: Entrega un listado de personas en formato HTML.
+      operationId: GetPersonasHTML
+      responses:
+        "200":
+          description: Data de la Persona consultada
+  /api/persona/{identificador}:
+    delete:
+      description: Elimina una persona.
+      tags:
+      - Persona
+      summary: Elimina una persona.
+      operationId: DeletePersona
+      parameters:
+      - type: Persona
+        description: Identificador de la persona a eliminar.
+        name: identificador
+        in: path
+        required: true
+      responses:
+        "200":
+          description: (empty)
+definitions:
+  Persona:
+    description: Representación de la entidad Persona.
+    type: object
+    title: Persona
+    properties:
+      apellido:
+        type: string
+        x-go-name: Apellido
+      id:
+        type: integer
+        format: int64
+        x-go-name: ID
+      identificador:
+        type: string
+        x-go-name: Identificador
+      nombre:
+        type: string
+        x-go-name: Nombre
+      sexo:
+        type: string
+        x-go-name: Sexo
+    x-go-package: personas/modelo
